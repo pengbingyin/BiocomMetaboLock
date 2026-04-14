@@ -13,8 +13,8 @@ plt.rcParams['font.family'] = 'Arial'
 
 FITC_background_reference = 0.009643887
 
-input_dir = os.path.join("data", "fedbatch1")
-output_dir = os.path.join("output", "fedbatch1")
+input_dir = os.path.join("data", "HUMgEH_evolution")
+output_dir = os.path.join("output", "HUMgEH_evolution")
 
 os.makedirs(output_dir, exist_ok=True)
 

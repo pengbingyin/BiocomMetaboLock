@@ -50,8 +50,11 @@ session2_comparisons = [  # Between-strain at same condition (exclude CENPK)
     {"name": "VALg_96h_vs_VAL_96h", "condA": "VALg_96h", "condB": "VAL_96h"},
     {"name": "LIMg_96h_vs_NER_96h", "condA": "LIMg_96h", "condB": "NER_96h"},
     {"name": "HUMgE_EXP_vs_HUMg_EXP", "condA": "HUMgE_EXP", "condB": "HUMg_EXP"},
-    {"name": "HUMgEh_EXP_vs_HUMg_EXP", "condA": "HUMgEh_EXP", "condB": "HUMg_EXP"},
+    {"name": "HUMgEh_EXP_vs_HUMgE_EXP", "condA": "HUMgEh_EXP", "condB": "HUMgE_EXP"},
+    {"name": "HUMgEhE_EXP_vs_HUMgEh_EXP", "condA": "HUMgEhE_EXP", "condB": "HUMgEh_EXP"},
     {"name": "HUMgEhE_EXP_vs_HUMgE_EXP", "condA": "HUMgEhE_EXP", "condB": "HUMgE_EXP"},
+
+
 ]
 
 session3_comparisons = []
