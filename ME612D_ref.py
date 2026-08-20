@@ -79,21 +79,24 @@ for root, dirs, files in os.walk(input_dir):
                 print(f"   Skipped (not enough data)")
                 continue
 
-            # === Save raw FITC-A and processed fluorescence (before log10) ===
+            # === Save comprehensive fluorescence data ===
             base_name = os.path.splitext(filename)[0]
             output_subdir = os.path.join(output_dir, os.path.relpath(root, input_dir))
             os.makedirs(output_subdir, exist_ok=True)
 
-            # 1. Raw FITC-A values
-            pd.DataFrame({'FITC-A': data['FITC-A']}).to_csv(
-                os.path.join(output_subdir, base_name + '_FITC-A_raw.csv'), index=False)
+            # Create a clean DataFrame with the four columns you want
+            fluorescence_df = pd.DataFrame({
+                'FITC-A_raw': data['FITC-A'],
+                'FSC-A': data['FSC-A'],
+                'Normalised_FITC_A': data['normalized_FITC_A'],
+                'FITC_fluorescence': data['FITC_fluorescence']
+            })
 
-            # 2. Processed fluorescence (before log10)
-            pd.DataFrame({'FITC_fluorescence': fitc_data}).to_csv(
-                os.path.join(output_subdir, base_name + '_fluorescence.csv'), index=False)
+            # Save it
+            csv_path = os.path.join(output_subdir, base_name + '_fluorescence.csv')
+            fluorescence_df.to_csv(csv_path, index=False)
 
-            print(f"   Saved raw FITC-A → {base_name}_FITC-A_raw.csv")
-            print(f"   Saved fluorescence → {base_name}_fluorescence.csv")
+            print(f"   Saved fluorescence data → {base_name}_fluorescence.csv")
 
             # === Log10 transformation for plotting ===
             fitc_log = np.zeros_like(fitc_data, dtype=float)
